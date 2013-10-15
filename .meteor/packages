@@ -10,3 +10,5 @@ accounts-password
 email
 less
 router
+roles
+jquery-validation

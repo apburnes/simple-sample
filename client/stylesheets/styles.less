@@ -1,5 +1,44 @@
+@blue: #5FBCD3;
+@red: #FF2A2A;
+@white: #ffffff;
+
+a {
+	color: @blue;
+	&:hover {
+		color: desaturate(@blue, 20%);
+	}
+}
+
 body {
 	margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
+}
+
+/***************
+/*	Components
+****************/
+
+.btn-blue {
+	color: @white;
+	background-color: @blue;
+	border-color: darken(@blue, 10%);
+	&:hover {
+		background-color: lighten(@blue, 20%);
+	} 
+}
+
+/**************
+/*	Navbar
+**************/
+
+i {
+	&.red {
+		color: @red;
+		font-style: normal;
+	}
+	&.blue {
+		color: @blue;
+		font-style: normal;
+	}
 }
 
 .full-width-image-1 {
