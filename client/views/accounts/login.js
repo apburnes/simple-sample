@@ -30,7 +30,8 @@ Template.login.rendered = function() {
 				if (err) {
 					alert(err.reason)
 				} else {
-					Meteor.Router.to('home');
+					FlashMessages.sendSuccess("Hello " + Meteor.user().profile.name, { autoHide: true, hideDelay: 5000});
+					Meteor.Router.to('profile');
 				}
 			});
 		}

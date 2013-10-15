@@ -4,6 +4,9 @@
 </head>
 <body>
   {{> navbar}}
+  <div class="container">
+    {{> flashMessages}}
+  </div>
   {{#isolate}}
     {{renderPage}}
   {{/isolate}}

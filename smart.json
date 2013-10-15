@@ -2,6 +2,7 @@
   "packages": {
     "router": {},
     "roles": {},
-    "jquery-validation": {}
+    "jquery-validation": {},
+    "flash-messages": {}
   }
 }

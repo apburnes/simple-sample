@@ -4,7 +4,8 @@
     "basePackages": {
       "router": {},
       "roles": {},
-      "jquery-validation": {}
+      "jquery-validation": {},
+      "flash-messages": {}
     },
     "packages": {
       "router": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/properapp/jquery-validation.git",
         "tag": "v0.1.1",
         "commit": "5eea71ab67b13e0146e87727bf001dec9c5a3b85"
+      },
+      "flash-messages": {
+        "git": "https://github.com/camilosw/flash-messages.git",
+        "tag": "v0.2.1",
+        "commit": "62cf1ee531684808b91dbe3ff15e63f6d5af1c66"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
