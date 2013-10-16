@@ -1,10 +1,23 @@
 <template name="profile">
   <div class="container">
     <div class="row section">
-      <div class="col-md-offset-1 col-md-4">
-        <h2>{{profileName}}</h2>
-        <p class="lead">{{userEmail}}</p>
+      <div class="col-sm-3">
+        <div class="row well">
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="col-sm-12">
+                <h2>{{profileName}}</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <p class="lead">{{userEmail}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      {{> profileMap}}
     </div>
   </div>
 </template>

@@ -53,7 +53,7 @@ Template.newPasswordForm.rendered = function() {
 		submitHandler: function() {
 			var resetToken = Session.get('passwordResetToken');
 			var newPassword = $('#new-password-form').find("[name='newPasswordForm']").val();
-
+			
 			Accounts.resetPassword(resetToken, newPassword, function (error) {
 				if (error) {
 					FlashMessages.sendError(error.reason, { autoHide: true, hideDelay: 5000 });

@@ -13,3 +13,4 @@ router
 roles
 jquery-validation
 flash-messages
+leaflet
