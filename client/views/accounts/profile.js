@@ -4,5 +4,8 @@ Template.profile.helpers({
 	},
 	userEmail: function() {
 		return Meteor.user().emails[0].address;
+	},
+	currentProject: function() {
+		return Session.get('currentProjectId')
 	}
 });

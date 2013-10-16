@@ -1,0 +1,11 @@
+<template name="projectList">
+  <div class="row">
+    <div class="col-sm-12">
+      {{#each projects}}
+        <h3><a href="{{projectPagePath this}}">{{title}}</a></h3>
+        <p class="pull-right"><small>{{created_at}}</small></p>
+        <p>{{description}}</p>
+      {{/each}}
+    </div>
+  </div>
+</template>

@@ -1,9 +1,9 @@
 <template name="profile">
   <div class="container">
     <div class="row section">
-      <div class="col-sm-3">
-        <div class="row well">
-          <div class="col-sm-12">
+      <div class="col-sm-4">
+        <div class="row">
+          <div class="col-sm-12 divet">
             <div class="row">
               <div class="col-sm-12">
                 <h2>{{profileName}}</h2>
@@ -11,13 +11,19 @@
             </div>
             <div class="row">
               <div class="col-sm-12">
-                <p class="lead">{{userEmail}}</p>
+                <p>{{userEmail}}</p>
               </div>
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-sm-12 center-link">
+            <a href="{{createProjectPath}}" class="btn btn-blue btn-lg">Create Project</a>
+          </div>
+        </div> 
+        {{> projectList}}
       </div>
-      {{> profileMap}}
+        {{> profileMap}}
     </div>
   </div>
 </template>
