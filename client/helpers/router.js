@@ -17,6 +17,19 @@ Meteor.Router.add({
 			$('html, body').scrollTop(0);
 		}
 	},
+	'/reset-password': {
+    to: 'resetPassword',
+    and: function() {
+      $('html,body').scrollTop(0);
+    }
+  },
+	'/new-password/:token': {
+		to: 'newPasswordForm',
+		and: function(token) {
+			Session.set("passwordResetToken", token);
+			$('html,body').scrollTop(0);
+		}
+	},
 	'/profile': {
 		to: 'profile',
 		and: function() {
