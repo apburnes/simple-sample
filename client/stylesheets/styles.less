@@ -20,6 +20,22 @@ body {
 	padding-bottom: 75px;
 }
 
+.spacer {
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.spacer-top {
+	padding-top: 15px;
+	margin-top: 10px;
+}
+
+.spacer-bottom {
+	margin-bottom: 20px;
+	padding-bottom: 15px;
+	border-bottom: solid 1px @grey;
+}
+
 .section-heading {
 	font-size: 4em;
 	margin: 30px 0;
@@ -59,6 +75,16 @@ footer {
 	border-color: darken(@blue, 10%);
 	&:hover {
 		background-color: lighten(@blue, 20%);
+	} 
+}
+
+
+.btn-red {
+	color: @white;
+	background-color: @red;
+	border-color: darken(@red, 10%);
+	&:hover {
+		background-color: lighten(@red, 20%);
 	} 
 }
 
@@ -121,6 +147,15 @@ i {
 /*	Profile
 **************/
 
+.profile-head {
+	margin: 20px 0;
+	padding: 0 0 5px 0;
+	border-bottom: solid 2px @red;
+	box-shadow: 0 8px 0px -4px @blue;
+	-webkit-box-shadow: 0 8px 0px -4px @blue;
+	-moz-box-shadow: 0 8px 0px -4px @blue;
+}
+
 #profile-map {
 	min-height: 500px;
 }
@@ -136,11 +171,42 @@ i {
 	min-height: 20px;
 	padding: 19px;
 	margin-bottom: 20px;
-	background-color: @white;
+	background-color: @black;
 	border: 1px solid @black;
 	border-radius: 4px;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+/**************
+/*	Project List
+**************/
+
+#project-list {
+	border-bottom: solid 2px @grey;
+	h3 {
+		margin-left: 15px;
+	}
+}
+
+.project {
+	margin: 5px 0;
+	padding: 3px 0;
+	border-bottom: dotted 1px @grey;
+}
+.timestamp {
+	font-family: Courier, times;
+	font-size: .7em;
+	color: @black;
+}
+
+.project-link {
+	font-weight: bold;
+	font-size: 1.3em
+}
+
+.desc {
+	color: @red;
 }
 
 .center-link {

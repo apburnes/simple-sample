@@ -1,8 +1,8 @@
-<template name="projectList">
+<template name="geomList">
   <div id="project-list" class="row spacer-top">
-    <h3>Projects</h3>
+    <h3>Field Collection</h3>
   </div>
-  {{#each projects}}
+  {{#each geoms}}
   <div class="row project">
     <div class="col-sm-12">
       <div class="row">
@@ -10,12 +10,12 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <p class="project-link"><a href="{{projectPagePath this}}">{{title}}</a></p>
+          <p class="project-link"><a href="#">{{name}}}</a></p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
-            <p class="desc">{{description}}</p>
+            <p class="desc">{{desc}}</p>
         </div>
       </div>
     </div>

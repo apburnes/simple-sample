@@ -1,26 +1,28 @@
 <template name="profile">
   <div class="container">
-    <div class="row section">
-      <div class="col-sm-4">
+    <div class="row profile-head">
+      <div class="col-sm-6">
         <div class="row">
-          <div class="col-sm-12 divet">
-            <div class="row">
-              <div class="col-sm-12">
-                <h2>{{profileName}}</h2>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <p>{{userEmail}}</p>
-              </div>
-            </div>
+          <div class="col-sm-12">
+            <h2>{{profileName}}</h2>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-12 center-link">
-            <a href="{{createProjectPath}}" class="btn btn-blue btn-lg">Create Project</a>
+          <div class="col-sm-12">
+            <p>{{userEmail}}</p>
           </div>
-        </div> 
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-6 pull-right">
+            <h2 class="pull-right"><a href="{{createProjectPath}}" class="btn btn-blue btn-lg">Create Project</a></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
         {{> projectList}}
       </div>
         {{> profileMap}}

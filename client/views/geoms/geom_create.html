@@ -1,0 +1,35 @@
+<template name="geomCreate">
+  <div class="row spacer-bottom">
+      <form id="geom-create" class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="inputLat" class="col-md-2 control-label">Lat</label>
+          <div class="col-md-8">
+            <input type="number" step="any" min="-180" max="180" class="form-control" id="inputLat" placeholder="Latitude">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputLong" class="col-md-2 control-label">Long</label>
+          <div class="col-md-8">
+            <input type="number" step="any" min="-180" max="180" class="form-control" id="inputLong" placeholder="Long">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pointName" class="col-md-2 control-label">Name</label>
+          <div class="col-md-8">
+            <input name="pointName" type="Text" class="form-control" id="point-name" placeholder="Point name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pointDesc" class="col-md-2 control-label">Desciption</label>
+          <div class="col-md-8">
+            <textarea name="pointDesc" class="form-control" id="point-desc" rows="2" placeholder="Attribute the point..."></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+            <button id="create-point" type="submit" class="btn btn-success">Save Point</button>
+          </div>
+        </div>
+      </form>
+  </div>
+</template>

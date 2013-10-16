@@ -1,6 +1,36 @@
 <template name="projectPage">
   {{#with currentProject}}
-  <h3>{{title}}</h3>
-    <p>{{description}}</p>
+  <div class="container">
+    <div class="row profile-head">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-12">
+            <h2>{{title}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p>{{description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-6 pull-right">
+            <h2 class="pull-right"><button type="button" class="btn btn-red btn-lg add-point">Create GPS Point</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{#if adding}}
+      {{> geomCreate}}
+    {{/if}}
+    <div class="row">
+      <div class="col-sm-4">
+        {{> geomList}}
+      </div>
+        {{> profileMap}}
+    </div>
+  </div>
   {{/with}}
 </template>
