@@ -74,5 +74,10 @@ Template.geomCreate.rendered = function () {
 Template.geomCreate.events({
 	'submit form': function (e, tmpl) {
 		e.preventDefault();
+	},
+	'click #cancel-point': function (e) {
+		e.preventDefault();
+		
+		Session.set('adding-' + Session.get('currentProjectId'), false);
 	}
 })

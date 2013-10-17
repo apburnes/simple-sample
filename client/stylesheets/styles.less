@@ -3,6 +3,7 @@
 @white: #ffffff;
 @black: #000;
 @grey: #e3e3e3;
+@darkgrey: #252525;
 
 a {
 	color: @blue;
@@ -100,6 +101,14 @@ footer {
 	} 
 }
 
+.btn-micro {
+	padding: 2px 5px;
+	font-size: 10px;
+	line-height: 1;
+	border-radius: 2px;
+	margin: 0px 3px 2px 3px;
+}
+
 /**************
 /*	Navbar
 **************/
@@ -120,14 +129,14 @@ i {
 **************/
 
 .full-width-image-1 {
-	background: url(http://lorempixel.com/g/1920/500/) no-repeat center center;
+/*	background: url(http://lorempixel.com/g/1920/500/) no-repeat center center;*/
 	background-size: cover;
 	text-align: center;
 	padding: 25px 0;
 }
 
 .full-width-image-2 {
-	background: url(http://lorempixel.com/g/1920/450/) no-repeat center center;
+/*	background: url(http://lorempixel.com/g/1920/450/) no-repeat center center;*/
 	background-size: cover;
 	text-align: center;
 	height: 450px;
@@ -171,7 +180,7 @@ i {
 	min-height: 20px;
 	padding: 19px;
 	margin-bottom: 20px;
-	background-color: @black;
+	background-color: @darkgrey;
 	border: 1px solid @black;
 	border-radius: 4px;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -182,11 +191,17 @@ i {
 /*	Project List
 **************/
 
+.map {
+	height: 500px;
+}
+
 #project-list {
-	border-bottom: solid 2px @grey;
-	h3 {
-		margin-left: 15px;
-	}
+	overflow-y: scroll;
+	height: 500px
+}
+
+.list-header {
+ 	border-top: solid 1px @black;
 }
 
 .project {
@@ -197,7 +212,7 @@ i {
 .timestamp {
 	font-family: Courier, times;
 	font-size: .7em;
-	color: @black;
+	color: @grey;
 }
 
 .project-link {
@@ -206,9 +221,19 @@ i {
 }
 
 .desc {
-	color: @red;
+	color: @white;
 }
 
 .center-link {
 	text-align: center;
+}
+
+/**************
+/*	Geom List
+**************/
+
+.coord {
+	color: desaturate(@red, 20%);
+	font-size: 10px;
+	font-style: italic;
 }

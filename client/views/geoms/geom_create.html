@@ -1,16 +1,17 @@
 <template name="geomCreate">
   <div class="row spacer-bottom">
+    <div class="col-md-12">
       <form id="geom-create" class="form-horizontal" role="form">
         <div class="form-group">
           <label for="inputLat" class="col-md-2 control-label">Lat</label>
           <div class="col-md-8">
-            <input type="number" step="any" min="-180" max="180" class="form-control" id="inputLat" placeholder="Latitude">
+            <input name="inputLat" type="number" step="any" min="-180" max="180" class="form-control" id="inputLat" placeholder="Latitude">
           </div>
         </div>
         <div class="form-group">
           <label for="inputLong" class="col-md-2 control-label">Long</label>
           <div class="col-md-8">
-            <input type="number" step="any" min="-180" max="180" class="form-control" id="inputLong" placeholder="Long">
+            <input name="inputLong" type="number" step="any" min="-180" max="180" class="form-control" id="inputLong" placeholder="Long">
           </div>
         </div>
         <div class="form-group">
@@ -26,10 +27,12 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-md-offset-2 col-md-10">
+          <div class="col-md-offset-2 col-md-8">
             <button id="create-point" type="submit" class="btn btn-success">Save Point</button>
+            <p class="pull-right"><button id="cancel-point" class="btn btn-default">Cancel</button></p>
           </div>
         </div>
       </form>
+    </div>
   </div>
 </template>

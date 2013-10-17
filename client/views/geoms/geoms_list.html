@@ -1,21 +1,32 @@
 <template name="geomList">
-  <div id="project-list" class="row spacer-top">
-    <h3>Field Collection</h3>
-  </div>
   {{#each geoms}}
-  <div class="row project">
+  <div class="row project divet">
     <div class="col-sm-12">
       <div class="row">
-        <p class="timestamp pull-right"><i>{{prettifyDate created_at}}</i></p>
+        <div class="col-md-12">
+          <p class="timestamp pull-right"><i>{{prettifyDate created_at}}</i></p>
+        </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12">
+      <div class="row list-header">
+        <div class="col-sm-8">
           <p class="project-link"><a href="#">{{name}}}</a></p>
+        </div>
+        <div class="col-sm-4">
+          <p class="coord">Lat: {{coordClip lat}}</p>
+          <p class="coord">Long: {{coordClip lng}}</p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
             <p class="desc">{{desc}}</p>
+        </div>
+      </div>
+      <div class="row list-header">
+        <div class="col-sm-12">
+          <p>
+          <button id="delete-point" class="btn btn-micro btn-danger pull-right">Delete</button>
+          <button id="edit-point" class="btn btn-micro btn-info pull-right">Edit</button>
+          </p>
         </div>
       </div>
     </div>

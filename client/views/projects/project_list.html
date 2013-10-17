@@ -1,16 +1,15 @@
 <template name="projectList">
-  <div id="project-list" class="row spacer-top">
-    <h3>Projects</h3>
-  </div>
   {{#each projects}}
-  <div class="row project">
+  <div class="row project divet">
     <div class="col-sm-12">
       <div class="row">
-        <p class="timestamp pull-right"><i>{{prettifyDate created_at}}</i></p>
+        <div class="col-md-12">
+          <p class="timestamp pull-right"><i>{{prettifyDate created_at}}</i></p>
+        </div>
       </div>
-      <div class="row">
+      <div class="row list-header">
         <div class="col-sm-12">
-          <p class="project-link"><a href="{{projectPagePath this}}">{{title}}</a></p>
+          <p class="lead"><a href="{{projectPagePath this}}">{{title}}</a></p>
         </div>
       </div>
       <div class="row">
