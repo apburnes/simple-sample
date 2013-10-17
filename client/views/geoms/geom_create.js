@@ -53,7 +53,6 @@ Template.geomCreate.rendered = function () {
 		submitHandler: function () {
 			var user = Meteor.user();
 			var projectId = Session.get('currentProjectId');
-			console.log(projectId);
 			
 			var geom = {
 				lat: $('#geom-create').find('[name="inputLat"]').val(),
