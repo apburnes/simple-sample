@@ -48,6 +48,13 @@ Meteor.Router.add({
 			Session.set('currentProjectId', id);
 			$('html, body').scrollTop(0);
 		}
+	},
+	'/project/:_id/map': {
+		to: 'projectMapView',
+		and: function(id) {
+			Session.set('currentProjectId', id);
+			$('html, body').scrollTop(0);
+		}
 	}
 });
 

@@ -1,4 +1,14 @@
 <template name="geomList">
+  <div class="row">
+    <div class="col-xs-8">
+      <p class="lead">Points Collected</p>
+    </div>
+    <div class="col-xs-4">
+      {{#with currentProject}}
+      <p class="pull-right"><a href="{{projectMapViewPath this}}" class="btn btn-default btn-micro">Map View</a></p>
+      {{/with}}
+    </div>
+  </div>
   {{#each geoms}}
   <div class="row project divet">
     <div class="col-sm-12">

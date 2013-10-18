@@ -5,7 +5,7 @@
       <div class="col-sm-6">
         <div class="row">
           <div class="col-sm-12">
-            <h2>{{title}}</h2>
+            <h3><a href="{{profilePath}}">{{currentUser.profile.name}}</a>/{{title}}</h3>
           </div>
         </div>
         <div class="row">
@@ -17,7 +17,7 @@
       <div class="col-sm-6">
         <div class="row">
           <div class="col-sm-6 pull-right">
-            <h2 class="pull-right"><button type="button" class="btn btn-red btn-lg add-point">Create GPS Point</a></button>
+            <h2 class="pull-right"><button type="button" class="btn btn-red btn-lg add-point">Create GPS Point</button></h2>
           </div>
         </div>
       </div>
@@ -29,7 +29,9 @@
       <div id="geom-list" class="col-sm-4">
         {{> geomList}}
       </div>
+      <div class="hidden-xs col-sm-offset-1 col-sm-7">
         {{> projectMap}}
+      </div>
     </div>
   </div>
   {{/with}}

@@ -1,0 +1,25 @@
+<template name="projectMapView">
+  {{#with currentProject}}
+  <div class="container">
+    <div class="row profile-head">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-12">
+            <h3><a href="{{profilePath}}">{{currentUser.profile.name}}</a><a class="black" href="{{projectPagePath this}}">/{{title}}</a></h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p>{{description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        {{> projectMap}}
+      </div>
+    </div>
+  </div>
+  {{/with}}
+</template>
