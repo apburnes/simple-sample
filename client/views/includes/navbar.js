@@ -1,5 +1,5 @@
 Template.navbar.events({
-	'click .logout-link': function(e) {
+	'click #logout-link': function(e) {
 		e.preventDefault();
 		Meteor.logout(function() {
 			Meteor.Router.homePath();

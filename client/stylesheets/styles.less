@@ -12,6 +12,13 @@ a {
 	}
 }
 
+.red a {
+	color: @red;
+	&:hover {
+		color: desaturate(@red, 20%);
+	}
+}
+
 body {
 	margin-top: 50px;
 }
