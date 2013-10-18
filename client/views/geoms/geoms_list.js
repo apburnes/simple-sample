@@ -14,5 +14,14 @@ Template.geomList.events({
 			Geoms.remove(this._id);
 			Deps.flush();
 		}
+	},
+	'click .geom-point-coords': function (e) {
+		e.preventDefault();
+		
+		var lat = this.lat;
+		var lng = this.lng;
+		
+		Map.panTo([lat, lng]);
+		Map.setZoom(16);
 	}
 });
