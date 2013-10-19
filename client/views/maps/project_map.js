@@ -5,23 +5,30 @@ Template.projectMap.rendered = function () {
 	var pointList = Geoms.find({projectId: projectId}).fetch();
 	var pointCount = Geoms.find({projectId: projectId}).count();
 
-	Map = L.map('project-map').setView([33.4500, -112.0667], 8);
+	Map = L.map('project-map');
 
 	var latList = [];
 	var lngList = [];
 
-	if (pointCount > 0) {
+	if (pointCount === 1) {
+
+		Map.setView([_.pluck(pointList, 'lat')[0], _.pluck(pointList, 'lng')[0]], 12);
+
+	} else if (pointCount > 1) {
+
 		_.each(pointList, function (geo) {
 			latList.push([geo.lat]);
 			lngList.push([geo.lng]);
 		});
 
-		var minLat = _.min(latList)[0];
-		var maxLat = _.max(latList)[0];
-		var minLng = _.min(lngList)[0];
-		var maxLng = _.max(lngList[0]);
+		var southWest = new L.LatLng(_.min(latList)[0], _.min(lngList)[0]);
+		var northEast = new L.LatLng(_.max(latList)[0], _.max(lngList)[0]);
 
-		var bndry = [[minLat, minLng],[maxLat,maxLng]];
+		var bndry = new L.LatLngBounds(southWest, northEast);
+
+		Map.fitBounds(bndry);
+	} else {
+		Map.setView([33.4500, -112.0667], 8);
 	}
 
 	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
