@@ -8,6 +8,9 @@ Template.projectPage.helpers({
 	},
 	adding: function () {
 		return Session.get('adding-' + this._id)
+	},
+	noGeomList: function () {
+		return Geoms.find({projectId: Session.get('currentProjectId')}).count() === 0;
 	}
 })
 

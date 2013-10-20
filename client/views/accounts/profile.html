@@ -22,9 +22,15 @@
       </div>
     </div>
     <div class="row">
-      <div id="project-list" class="col-sm-4">
-        {{> projectList}}
-      </div>
+      {{#if noProjects}}
+        <div id="project-list" class="col-sm-4">
+          {{> noProjectList}}
+        </div>
+      {{else}}
+        <div id="project-list" class="col-sm-4">
+          {{> projectList}}
+        </div>
+      {{/if}}
         {{> profileMap}}
     </div>
   </div>

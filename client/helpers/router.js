@@ -77,5 +77,5 @@ Meteor.Router.filters({
 	}
 });
 
-Meteor.Router.filter('requireLogin', {only: 'profile'});
+Meteor.Router.filter('requireLogin', {only: ['profile', 'projectPage', 'projectMapView', 'createProject']});
 Meteor.Router.filter('currentUser', { only: ['home', 'signup', 'login', 'resetPassword', 'newPasswordForm']} )
