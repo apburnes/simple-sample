@@ -7,5 +7,8 @@ Template.profile.helpers({
 	},
 	noProjects: function() {
 		return Projects.find({userId: Meteor.user()._id }).count() === 0;
+	},
+	withProjects: function() {
+		return Projects.find({userId: Meteor.user()._id }).count() > 0;
 	}
 });

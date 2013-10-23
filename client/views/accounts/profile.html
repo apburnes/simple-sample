@@ -13,6 +13,7 @@
           </div>
         </div>
       </div>
+      {{#with withProjects}}
       <div class="col-sm-6">
         <div class="row">
           <div class="col-sm-6 pull-right">
@@ -20,11 +21,17 @@
           </div>
         </div>
       </div>
+      {{/with}}
     </div>
     <div class="row">
       {{#if noProjects}}
         <div id="project-list" class="col-sm-4">
           {{> noProjectList}}
+          <div class="row">
+            <div class="col-sm-6">
+              <h2><a href="{{createProjectPath}}" class="btn btn-blue btn-lg">Create Project</a></h2>
+            </div>
+          </div>
         </div>
       {{else}}
         <div id="project-list" class="col-sm-4">
