@@ -1,11 +1,12 @@
 <template name="projectList">
   <p class="lead">Projects</p>
+  <div class="row project">
   {{#each projects}}
-  <div class="row project divet">
-    <div class="col-sm-12">
+    <div class="col-sm-6 col-md-4">
+      <div class="col-sm-offset-1 col-sm-10 divet">
       <div class="row">
         <div class="col-md-12">
-          <p class="timestamp pull-right"><i>{{prettifyDate created_at}}</i></p>
+          <p class="timestamp pull-right time-divet"><i>{{prettifyDate created_at}}</i></p>
         </div>
       </div>
       <div class="row list-header">
@@ -15,7 +16,13 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-            <p class="desc">{{description}}</p>
+            <p class="red">Description:</p>
+            <p class="desc divet">{{description}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+            <p class="red">Features Collected: <i class="white">{{geomCount}}</i></p>
         </div>
       </div>
       <div class="row list-header">
@@ -26,7 +33,8 @@
           </p>
         </div>
       </div>
+      </div>
     </div>
+    {{/each}}
   </div>
-{{/each}}
 </template>

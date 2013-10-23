@@ -120,7 +120,7 @@ footer {
 /*	Navbar
 **************/
 
-i {
+i, p {
 	&.red {
 		color: @red;
 		font-style: normal;
@@ -129,6 +129,17 @@ i {
 		color: @blue;
 		font-style: normal;
 	}
+	&.white {
+		color: @white;
+		/*font-style: normal;*/
+		font-size: 1.4em;
+		font-weight: normal;
+	}
+}
+
+p.red {
+	font-weight: bold;
+	font-size: .8em;
 }
 
 /**************
@@ -212,6 +223,10 @@ a.black {
 	height: 500px
 }
 
+.project-card {
+	background-color: @grey;
+}
+
 .list-header {
  	border-top: solid 1px @black;
 }
@@ -224,7 +239,24 @@ a.black {
 .timestamp {
 	font-family: Courier, times;
 	font-size: .7em;
-	color: @grey;
+	color: @darkgrey;
+}
+
+.time-divet {
+	min-height: 8px;
+	padding: 2px;
+/*	margin-bottom: 20px;*/
+	background-color: @white;
+	/*border: 1px solid @black;*/
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.desc.divet {
+	padding: 10px;
+	height: 95px;
+	overflow-y: hidden;
 }
 
 .project-link {
