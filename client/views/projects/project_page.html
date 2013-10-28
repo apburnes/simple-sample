@@ -14,16 +14,33 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-2">
         <div class="row">
           <div class="col-sm-6 pull-right">
-            <h2 class="pull-right"><button type="button" class="btn btn-red btn-lg add-point">Create GPS Point</button></h2>
+            <h2 class="pull-right"><button type="button" class="btn btn-red btn-lg add-point">Create Point</button></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="row">
+          <div class="col-sm-6 pull-right">
+            <h2 class="pull-right"><button type="button" class="btn btn-red btn-lg add-line">Create Line</button></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="row">
+          <div class="col-sm-6 pull-right">
+            <h2 class="pull-right"><button type="button" class="btn btn-red btn-lg add-rect">Create Polygon</button></h2>
           </div>
         </div>
       </div>
     </div>
-    {{#if adding}}
+    {{#if addPoint}}
       {{> geomCreate}}
+    {{/if}}
+    {{#if addLine}}
+      {{> lineCreate}}
     {{/if}}
     <div class="row">
       {{#if noGeomList}}

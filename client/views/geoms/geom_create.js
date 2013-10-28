@@ -65,7 +65,7 @@ Template.geomCreate.rendered = function () {
 			}
 			
 			geom._id = Geoms.insert(geom);
-			Session.set("adding-" + projectId, false)
+			Session.set("addPoint-" + projectId, false)
 		}
 	})
 }
@@ -77,6 +77,6 @@ Template.geomCreate.events({
 	'click #cancel-point': function (e) {
 		e.preventDefault();
 		
-		Session.set('adding-' + Session.get('currentProjectId'), false);
+		Session.set('addPoint-' + Session.get('currentProjectId'), false);
 	}
 })
