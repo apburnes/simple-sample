@@ -28,12 +28,6 @@ Template.lineCreate.rendered = function () {
 
 	$(lineForm).validate({
 		rules: {
-			inputLat: {
-				required: true
-			},
-			inputLong: {
-				required: true
-			},
 			pointName: {
 				required: true
 			}
@@ -53,18 +47,26 @@ Template.lineCreate.rendered = function () {
 			var user = Meteor.user();
 			var projectId = Session.get('currentProjectId');
 
+			var coordsList = [];
+			var inputLat = '.input-lat';
+			var inputLng = '.input-lng'
+
+			listCoords(coordsList, inputLat, inputLng);
+
 			var geom = {
-				lat: $('#geom-create').find('[name="inputLat"]').val(),
-				lng: $('#geom-create').find('[name="inputLong"]').val(),
-				name: $('#geom-create').find('[name="pointName"]').val(),
-				desc: $('#geom-create').find('[name="pointDesc"]').val(),
+				loc: {
+					type: 'LineString',
+					coordinates: coordsList
+				},
+				name: $('#line-create').find('#line-name').val(),
+				desc: $('#line-create').find('#line-desc').val(),
 				userId: user._id,
 				projectId: projectId,
 				created_at: new Date().getTime()
 			}
 
 			geom._id = Geoms.insert(geom);
-			Session.set("addLine-" + projectId, false)
+			Session.set("addLine-" + projectId, false);
 		}
 	})
 }
@@ -72,11 +74,11 @@ Template.lineCreate.rendered = function () {
 Template.lineCreate.events({
 	'submit form': function (e, tmpl) {
 		e.preventDefault();
+
+		var projectId = Session.get('currentProjectId');
+		Meteor.Router.to('projectPage', projectId);
 	},
-	// 'click .next-point': function (e, tmpl) {
-	// 	e.preventDefault();
-	// 	// Session.set('nextPoint-' + Session.get('currentProjectId'), true);
-	// },
+
 	'click #cancel-line': function (e) {
 		e.preventDefault();
 
@@ -111,4 +113,25 @@ var getCoords = function (latField, lngField) {
 	function error() {
 		console.log("Geocoder failed");
 	}
+}
+
+var listCoords = function (array, inputLat, inputLng) {
+	var listLat = [];
+	var listLng = [];
+
+	if ($(inputLat).length === $(inputLng).length) {
+		$(inputLat).each(function () {
+			listLat.push($(this).val());
+		});
+
+		$(inputLng).each(function () {
+			listLng.push($(this).val());
+		});
+
+		for(var i = 0; i < $(inputLat).length; i++) {
+			array.push([listLat[i], listLng[i]]);
+		}
+	}
+
+	console.log(listLat, listLng)
 }
