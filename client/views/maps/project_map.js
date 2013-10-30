@@ -76,9 +76,16 @@ function filterGeoms(shapeList, pointGroup, lineGroup, polygonGroup) {
 	pointGroup.clearLayers();
 	polygonGroup.clearLayers();
 
+	var publicIcon = L.icon({
+          iconUrl: "/public-marker.png"
+  });
+
 	_.each(shapeList, function (item) {
 		if (item.geometry.type === 'Point') {
 			var pointLayer = L.geoJson(item, {
+				pointToLayer: function(feature, latlng) {
+					return L.marker(latlng, {icon: publicIcon})
+				},
 				onEachFeature: function(feature,layer) {
 					layer.bindPopup(feature.desc);
 				}
