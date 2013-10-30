@@ -13,6 +13,9 @@ Template.projectPage.helpers({
 	addLine: function () {
 		return Session.get('addLine-' + this._id);
 	},
+	addPolygon: function () {
+		return Session.get('addPolygon-' + this._id);
+	},
 	noGeomList: function () {
 		return Geoms.find({projectId: Session.get('currentProjectId')}).count() === 0;
 	}
@@ -35,5 +38,13 @@ Template.projectPage.events({
 			Session.set('addLine-' + Session.get('currentProjectId'), true);
 
 			$('.add-line').prop('disabled', true);
+		},
+		'click .add-polygon': function (e, tmpl) {
+
+			e.preventDefault();
+
+			Session.set('addPolygon-' + Session.get('currentProjectId'), true);
+
+			$('.add-polygon').prop('disabled', true);
 		}
 })

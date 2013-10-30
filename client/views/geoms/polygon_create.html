@@ -1,8 +1,8 @@
-<template name="lineCreate">
+<template name="polygonCreate">
   <div class="row spacer-bottom">
     <div class="col-md-12">
-      <p class="lead">Collect Line</p>
-      <form id="line-create" class="form-horizontal" role="form">
+      <p class="lead">Collect Polygon</p>
+      <form id="polygon-create" class="form-horizontal" role="form">
         <div class="form-group">
           <label for="inputLat" class="col-md-2 control-label">Lat</label>
           <div class="col-md-8">
@@ -23,18 +23,18 @@
         <div class="form-group">
           <label for="pointName" class="col-md-2 control-label">Name</label>
           <div class="col-md-8">
-            <input name="pointName" type="Text" class="form-control" id="line-name" placeholder="Line name">
+            <input name="pointName" type="Text" class="form-control" id="polygon-name" placeholder="Polygon name">
           </div>
         </div>
         <div class="form-group">
           <label for="pointDesc" class="col-md-2 control-label">Description</label>
           <div class="col-md-8">
-            <textarea name="pointDesc" class="form-control" id="line-desc" rows="2" placeholder="Attribute the line..."></textarea>
+            <textarea name="pointDesc" class="form-control" id="polygon-desc" rows="2" placeholder="Attribute the polygon..."></textarea>
           </div>
         </div>
         <div class="form-group">
           <div class="col-md-offset-2 col-md-8">
-            <button id="create-point" type="submit" class="btn btn-success">Save Line</button>
+            <button id="create-point" type="submit" class="btn btn-success">Save Polygon</button>
             <p class="pull-right"><button id="cancel-line" class="btn btn-default">Cancel</button></p>
           </div>
         </div>

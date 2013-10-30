@@ -18,7 +18,9 @@ Template.projectMap.rendered = function () {
 				latList.push(item.geometry.coordinates[1]);
 				lngList.push(item.geometry.coordinates[0]);
 
-			} else {
+			}
+
+			else if (item.geometry.type === 'LineString') {
 
 				_.each(item.geometry.coordinates, function (coords) {
 					latList.push(coords[1]);
@@ -26,6 +28,16 @@ Template.projectMap.rendered = function () {
 				})
 
 			}
+
+			else if (item.geometry.type === 'Polygon') {
+				console.log(item.geometry.coordinates[0]);
+				_.each(item.geometry.coordinates[0], function (coords) {
+					latList.push(coords[1]);
+					lngList.push(coords[0]);
+				})
+
+			}
+
 		});
 
 		if ((latList.length === 1) && (lngList.length === 1)) {
@@ -81,6 +93,7 @@ function filterGeoms(shapeList, pointGroup, lineGroup, polygonGroup) {
   });
 
 	_.each(shapeList, function (item) {
+
 		if (item.geometry.type === 'Point') {
 			var pointLayer = L.geoJson(item, {
 				pointToLayer: function(feature, latlng) {
@@ -93,13 +106,21 @@ function filterGeoms(shapeList, pointGroup, lineGroup, polygonGroup) {
 			pointLayer.addTo(pointGroup);
 
 		} else if (item.geometry.type === "LineString") {
-
 			var lineLayer = L.geoJson(item, {
 				onEachFeature: function(feature,layer) {
 					layer.bindPopup(feature.desc);
 				}
 			});
 			lineLayer.addTo(lineGroup);
+
+		} else if (item.geometry.type === "Polygon") {
+			var polygonLayer = L.geoJson(item, {
+				style: {color: "#FF2A2A"},
+				onEachFeature: function(feature, layer) {
+					layer.bindPopup(feature.desc);
+				}
+			});
+			polygonLayer.addTo(polygonGroup);
 		}
 	})
 }

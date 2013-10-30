@@ -1,10 +1,10 @@
-// Template.lineCreate.helpers({
+// Template.polygonCreate.helpers({
 // 	nextPoint: function () {
 // 		return Session.get('nextPoint-' + Session.get('currentProjectId'));
 // 	}
 // })
 
-Template.lineCreate.rendered = function () {
+Template.polygonCreate.rendered = function () {
 
 	var inputLat = '#inputLat';
 	var inputLng = '#inputLng';
@@ -24,9 +24,9 @@ Template.lineCreate.rendered = function () {
 
 	});
 
-	var lineForm = this.find('form');
+	var polygonForm = this.find('form');
 
-	$(lineForm).validate({
+	$(polygonForm).validate({
 		rules: {
 			pointName: {
 				required: true
@@ -49,30 +49,31 @@ Template.lineCreate.rendered = function () {
 
 			var coordsList = [];
 			var inputLat = '.input-lat';
-			var inputLng = '.input-lng'
+			var inputLng = '.input-lng';
 
 			listCoords(coordsList, inputLat, inputLng);
 
 			var geom = {
 				type: 'Feature',
 				geometry: {
-					type: 'LineString',
-					coordinates: coordsList
+					type: 'Polygon',
+					coordinates: [coordsList]
 				},
-				name: $('#line-create').find('#line-name').val(),
-				desc: $('#line-create').find('#line-desc').val(),
+				name: $('#polygon-create').find('#polygon-name').val(),
+				desc: $('#polygon-create').find('#polygon-desc').val(),
 				userId: user._id,
 				projectId: projectId,
 				created_at: new Date().getTime()
 			}
+			console.log(coordsList);
 
 			geom._id = Geoms.insert(geom);
-			Session.set("addLine-" + projectId, false);
+			Session.set("addPolygon-" + projectId, false);
 		}
 	})
 }
 
-Template.lineCreate.events({
+Template.polygonCreate.events({
 	'submit form': function (e, tmpl) {
 		e.preventDefault();
 
@@ -132,7 +133,7 @@ var listCoords = function (array, inputLat, inputLng) {
 		for(var i = 0; i < $(inputLat).length; i++) {
 			array.push([listLng[i], listLat[i]]);
 		}
+
 	}
 
-	console.log(listLat, listLng)
 }

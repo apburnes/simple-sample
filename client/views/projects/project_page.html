@@ -31,7 +31,7 @@
       <div class="col-sm-2">
         <div class="row">
           <div class="col-sm-6 pull-right">
-            <h2 class="pull-right"><button type="button" class="btn btn-red btn-lg add-rect">Create Polygon</button></h2>
+            <h2 class="pull-right"><button type="button" class="btn btn-red btn-lg add-polygon">Create Polygon</button></h2>
           </div>
         </div>
       </div>
@@ -41,6 +41,9 @@
     {{/if}}
     {{#if addLine}}
       {{> lineCreate}}
+    {{/if}}
+    {{#if addPolygon}}
+      {{> polygonCreate}}
     {{/if}}
     <div class="row">
       {{#if noGeomList}}
