@@ -1,34 +1,50 @@
 Template.projectMap.rendered = function () {
 	var markers;
 
-	var projectId = Session.get('currentProjectId')
-	var pointList = Geoms.find({projectId: projectId}).fetch();
-	var pointCount = Geoms.find({projectId: projectId}).count();
+	var projectId = Session.get('currentProjectId');
+	var shapeList = Geoms.find({projectId: projectId}).fetch();
+	var shapeCount = Geoms.find({projectId: projectId}).count();
 
 	Map = L.map('project-map');
 
 	var latList = [];
 	var lngList = [];
 
-	if (pointCount === 1) {
+	if (shapeCount > 0) {
 
-		Map.setView([_.pluck(pointList, 'lat')[0], _.pluck(pointList, 'lng')[0]], 12);
+		_.each(shapeList, function (item) {
+			if (item.geometry.type === 'Point') {
 
-	} else if (pointCount > 1) {
+				latList.push(item.geometry.coordinates[1]);
+				lngList.push(item.geometry.coordinates[0]);
 
-		_.each(pointList, function (geo) {
-			latList.push([geo.lat]);
-			lngList.push([geo.lng]);
+			} else {
+
+				_.each(item.geometry.coordinates, function (coords) {
+					latList.push(coords[1]);
+					lngList.push(coords[0]);
+				})
+
+			}
 		});
 
-		var southWest = new L.LatLng(_.min(latList)[0], _.min(lngList)[0]);
-		var northEast = new L.LatLng(_.max(latList)[0], _.max(lngList)[0]);
+		if ((latList.length === 1) && (lngList.length === 1)) {
 
-		var bndry = new L.LatLngBounds(southWest, northEast);
+			Map.setView([latList[0], lngList[0]], 12)
 
-		Map.fitBounds(bndry);
+		} else {
+
+			var southWest = new L.LatLng(_.min(latList), _.min(lngList));
+			var northEast = new L.LatLng(_.max(latList), _.max(lngList));
+			var bndry = new L.LatLngBounds(southWest, northEast);
+
+			Map.fitBounds(bndry);
+		}
+
 	} else {
-		Map.setView([33.4500, -112.0667], 8);
+
+		Map.setView([33.4500, -112.0667], 12);
+
 	}
 
 	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -36,23 +52,47 @@ Template.projectMap.rendered = function () {
 		maxZoom: 18
 	}).addTo(Map);
 
-	markers = new L.LayerGroup().addTo(Map)
+	var pointGroup = new L.LayerGroup().addTo(Map);
+	var lineGroup = new L.LayerGroup().addTo(Map);
+	var polygonGroup = new L.LayerGroup().addTo(Map);
 
 	Deps.autorun(function () {
+
 		var projectId = Session.get('currentProjectId')
-		var pointList = Geoms.find({projectId: projectId}).fetch();
+		var shapeList = Geoms.find({projectId: projectId}).fetch();
 
 		var publicIcon = L.icon({
 			iconUrl: "/public-marker.png" 
 		});
 
-		markers.clearLayers();
+		filterGeoms(shapeList, pointGroup, lineGroup, polygonGroup);
 
-		_.each(pointList, function (geo) {
-
-			var marker = L.marker([geo.lat, geo.lng], {icon: publicIcon});
-			marker.bindPopup('<strong>' + geo.name + '</strong><br />' + geo.desc);
-			marker.addTo(markers);
-		});
 	});
+}
+
+function filterGeoms(shapeList, pointGroup, lineGroup, polygonGroup) {
+
+	lineGroup.clearLayers();
+	pointGroup.clearLayers();
+	polygonGroup.clearLayers();
+
+	_.each(shapeList, function (item) {
+		if (item.geometry.type === 'Point') {
+			var pointLayer = L.geoJson(item, {
+				onEachFeature: function(feature,layer) {
+					layer.bindPopup(feature.desc);
+				}
+			});
+			pointLayer.addTo(pointGroup);
+
+		} else if (item.geometry.type === "LineString") {
+
+			var lineLayer = L.geoJson(item, {
+				onEachFeature: function(feature,layer) {
+					layer.bindPopup(feature.desc);
+				}
+			});
+			lineLayer.addTo(lineGroup);
+		}
+	})
 }

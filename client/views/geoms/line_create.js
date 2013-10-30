@@ -54,7 +54,8 @@ Template.lineCreate.rendered = function () {
 			listCoords(coordsList, inputLat, inputLng);
 
 			var geom = {
-				loc: {
+				type: 'Feature',
+				geometry: {
 					type: 'LineString',
 					coordinates: coordsList
 				},
@@ -129,7 +130,7 @@ var listCoords = function (array, inputLat, inputLng) {
 		});
 
 		for(var i = 0; i < $(inputLat).length; i++) {
-			array.push([listLat[i], listLng[i]]);
+			array.push([listLng[i], listLat[i]]);
 		}
 	}
 

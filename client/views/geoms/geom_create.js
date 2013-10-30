@@ -53,17 +53,21 @@ Template.geomCreate.rendered = function () {
 		submitHandler: function () {
 			var user = Meteor.user();
 			var projectId = Session.get('currentProjectId');
-			
+			var lat = $('#geom-create').find('[name="inputLat"]').val();
+			var lng = $('#geom-create').find('[name="inputLong"]').val();
+
 			var geom = {
-				lat: $('#geom-create').find('[name="inputLat"]').val(),
-				lng: $('#geom-create').find('[name="inputLong"]').val(),
+				type: 'Feature',
+				geometry: {
+					type: 'Point',
+					coordinates: [lng, lat]
+				},
 				name: $('#geom-create').find('[name="pointName"]').val(),
 				desc: $('#geom-create').find('[name="pointDesc"]').val(),
 				userId: user._id,
 				projectId: projectId,
 				created_at: new Date().getTime()
 			}
-			
 			geom._id = Geoms.insert(geom);
 			Session.set("addPoint-" + projectId, false)
 		}

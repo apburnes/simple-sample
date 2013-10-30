@@ -15,7 +15,6 @@ Template.geomList.events({
 
 		if (confirmDelete) {
 			Geoms.remove(this._id);
-			// Deps.flush();
 		}
 	},
 	'click .geom-point-coords': function (e) {
