@@ -65,10 +65,18 @@ Template.polygonCreate.rendered = function () {
 				projectId: projectId,
 				created_at: new Date().getTime()
 			}
-			console.log(coordsList);
 
-			geom._id = Geoms.insert(geom);
-			Session.set("addPolygon-" + projectId, false);
+			if (coordsList.length < 3) {
+				FlashMessages.sendError("You must have minimum (3) points", { autoHide: true, hideDelay: 5000 });
+				Meteor.Router.to('projectPage', projectId);
+				Session.set('addPolygon-' + Session.get('currentProjectId'), false);
+			} else {
+
+				geom._id = Geoms.insert(geom);
+				Session.set("addPolygon-" + projectId, false);
+
+			}
+
 		}
 	})
 }
@@ -84,7 +92,7 @@ Template.polygonCreate.events({
 	'click #cancel-line': function (e) {
 		e.preventDefault();
 
-		Session.set('addLine-' + Session.get('currentProjectId'), false);
+		Session.set('addPolygon-' + Session.get('currentProjectId'), false);
 	}
 })
 

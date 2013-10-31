@@ -20,7 +20,7 @@ Template.createProject.rendered = function () {
 			var description = $('#project-creation').find("[name='projectDescription']").val();
 
 			if (!user) {
-				FlashMessage.sendError("You must be logged in to creat projects", { autoHide: true, hideDelay: 5000 })
+				FlashMessages.sendError("You must be logged in to creat projects", { autoHide: true, hideDelay: 5000 })
 				throw new Meteor.Error(401, "You are not allowed to post links.")
 			};
 

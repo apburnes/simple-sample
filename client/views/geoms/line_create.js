@@ -66,8 +66,17 @@ Template.lineCreate.rendered = function () {
 				created_at: new Date().getTime()
 			}
 
-			geom._id = Geoms.insert(geom);
-			Session.set("addLine-" + projectId, false);
+			if (coordsList.length < 2) {
+				FlashMessages.sendError("You must have minimum (2) points", { autoHide: true, hideDelay: 5000 });
+				Meteor.Router.to('projectPage', projectId);
+				Session.set('addLine-' + Session.get('currentProjectId'), false);
+
+			} else {
+
+				geom._id = Geoms.insert(geom);
+				Session.set("addLine-" + projectId, false);
+
+			}
 		}
 	})
 }
