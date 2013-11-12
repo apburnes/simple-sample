@@ -6,17 +6,19 @@
 
 Template.lineCreate.rendered = function () {
 
+	var geo = {};
+
 	var inputLat = '#inputLat';
 	var inputLng = '#inputLng';
 
-	getCoords(inputLat, inputLng);
+	getCoords(inputLat, inputLng, geo);
 
 	$('.next-point').click(function () {
-
+		var geo = {};
 		var inputLat = '.input-lat';
 		var inputLng = '.input-lng';
 
-		getCoords(inputLat, inputLng);
+		getCoords(inputLat, inputLng, geo);
 
 		var inputCoords = "<div class='form-group'><label for='inputLat' class='col-md-2 control-label'>Lat</label><div class='col-md-8'><input name='inputLat' type='number' step='any' min='-180' max='180' class='form-control coords input-lat' placeholder='Latitude'></div></div><div class='form-group'><label for='inputLong' class='col-md-2 control-label'>Long</label><div class='col-md-8'><input name='inputLong' type='number' step='any' min='-180' max='180' class='form-control coords input-lng' placeholder='Long'></div></div>";
 
@@ -96,9 +98,7 @@ Template.lineCreate.events({
 	}
 })
 
-var getCoords = function (latField, lngField) {
-
-	var geo = {};
+var getCoords = function (latField, lngField, geo) {
 
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showMap, error);

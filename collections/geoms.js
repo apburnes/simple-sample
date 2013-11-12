@@ -11,4 +11,3 @@ Geoms.allow({
 		return !! userId;
 	}
 });
-
